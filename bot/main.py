@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 import requests
 import os
-
+import ttsx3
+import time
 
 token = os.getenv("DISCORD_BOT_TOKEN")
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
@@ -49,6 +50,8 @@ async def clear(ctx, *args):
 @commands.has_role('fryslan')
 async def test(ctx, *args):
     channel = ctx.author.voice.channel
-    await channel.connect()
+    vc = await channel.connect()
+    vc.play(discord.FFmpegAudio(source='Sheck_Wes_-_Mo_Bamba_San_Holo_Remix.mp3'))
+
 
 bot.run(token)
