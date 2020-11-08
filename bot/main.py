@@ -3,8 +3,8 @@ from discord.ext import commands
 import requests
 import os
 
-token = os.getenv("DISCORD_BOT_TOKEN")
 
+token = os.getenv("DISCORD_BOT_TOKEN")
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
                    description='Een hele malse bot')
 
@@ -22,8 +22,12 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CheckFailure):
         await ctx.send('Dit mag jij helaas niet doen :)')
 
+@bot.event
+async def on_typing(channel, user, when):
+    print(channel, user, when)
 
-@bot.command(name='show', help='Zoek zelf hulp gast!')
+
+@bot.command(name='show', help='Zoek zelf hulp gast!', category=)
 @commands.has_role('fryslan')
 async def show(ctx, *args):
     response = 'Hallo'
