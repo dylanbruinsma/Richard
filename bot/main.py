@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import requests
 import os
+import ttsx3
 
 
 token = os.getenv("DISCORD_BOT_TOKEN")
@@ -49,6 +50,6 @@ async def clear(ctx, *args):
 @commands.has_role('fryslan')
 async def test(ctx, *args):
     channel = bot.get_channel(735213841235050536)
-    await bot.connect(channel)
+    await bot.join_voice_channel(channel)
 
 bot.run(token)
