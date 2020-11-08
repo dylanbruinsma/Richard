@@ -3,7 +3,7 @@ from discord.ext import commands
 import requests
 import os
 import ttsx3
-
+import time
 
 token = os.getenv("DISCORD_BOT_TOKEN")
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
@@ -49,7 +49,9 @@ async def clear(ctx, *args):
 @bot.command(name='test', help='Zoek zelf hulp gast!')
 @commands.has_role('fryslan')
 async def test(ctx, *args):
-    channel = bot.get_channel(735213841235050536)
-    await bot.join_voice_channel(channel)
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    time.sleep(5)
+    await ctx.voice_client.disconnect()
 
 bot.run(token)
