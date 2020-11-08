@@ -10,7 +10,6 @@ import random
 import youtube_dl
 from async_timeout import timeout
 
-
 token = os.getenv("DISCORD_BOT_TOKEN")
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
                    description='Een hele malse bot')
@@ -51,8 +50,6 @@ async def clear(ctx, *args):
     if args[0] == "all":
         await ctx.channel.purge(limit=999999999999)
     await ctx.channel.purge(limit=int(args[0]) + 1)
-
-
 
 
 # Silence useless bug reports messages
@@ -532,4 +529,6 @@ class Music(commands.Cog):
             if ctx.voice_client.channel != ctx.author.voice.channel:
                 raise commands.CommandError('Bot is already in a voice channel.')
 
+
+bot.add_cog(Music(bot))
 bot.run(token)
