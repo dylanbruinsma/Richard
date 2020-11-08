@@ -7,7 +7,9 @@ cffi==1.14.3
 chardet==3.0.4
 click==7.1.2
 colorama==0.4.4
+discord==1.0.1
 discord.py==1.5.1
+geojson==2.5.0
 google-api-core==1.23.0
 google-api-python-client==1.12.5
 google-auth==1.23.0
@@ -25,6 +27,7 @@ pyasn1-modules==0.2.8
 pycparser==2.20
 pyfiglet==0.8.post1
 PyNaCl==1.4.0
+pyowm==2.10.0
 python-dotenv==0.15.0
 python-resize-image==1.1.19
 pytz==2020.4
