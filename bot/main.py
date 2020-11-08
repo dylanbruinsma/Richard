@@ -2,9 +2,8 @@ import discord
 from discord.ext import commands
 import requests
 import os
-from pyowm import OWM
 
-owmtoken = os.getenv("OWM_BOT_TOKEN")
+
 token = os.getenv("DISCORD_BOT_TOKEN")
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
                    description='Een hele malse bot')
@@ -22,16 +21,6 @@ async def on_ready():
 async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CheckFailure):
         await ctx.send('Dit mag jij helaas niet doen :)')
-
-
-@bot.command(name='weer', help='Zoek zelf hulp gast!')
-@commands.has_role('fryslan')
-async def weer(ctx, *args):
-    owm = OWM(owmtoken)
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Groningen,NL')
-    w = observation.weather
-    await ctx.send(w)
 
 
 @bot.command(name='show', help='Zoek zelf hulp gast!')
@@ -56,5 +45,10 @@ async def clear(ctx, *args):
         await ctx.channel.purge(limit=999999999999)
     await ctx.channel.purge(limit=int(args[0]) + 1)
 
+@bot.command(name='test', help='Zoek zelf hulp gast!')
+@commands.has_role('fryslan')
+async def test(ctx, *args):
+    channel = bot.get_channel('735213841235050536')
+    await bot.join_voice_channel(channel)
 
 bot.run(token)
