@@ -29,7 +29,7 @@ async def on_command_error(ctx, error):
         await ctx.send('Dit mag jij helaas niet doen :)')
 
 
-class FaceReveal:
+class FaceReveal(commands.Cog):
     @bot.command(name='show', help='Zoek zelf hulp gast!')
     @commands.has_role('fryslan')
     async def show(ctx, *args):
