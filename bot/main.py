@@ -29,28 +29,27 @@ async def on_command_error(ctx, error):
         await ctx.send('Dit mag jij helaas niet doen :)')
 
 
-class FaceReveal(commands.Cog):
-    @bot.command(name='show', help='Zoek zelf hulp gast!')
-    @commands.has_role('fryslan')
-    async def show(ctx, *args):
-        response = 'Hallo'
-        image_url = 'https://vignette.wikia.nocookie.net/lekkerspelen/images/c/c6/Richard.jpg/revision/latest/scale-to-width-down/220?cb=20181203192730&path-prefix=nl'
-        img_data = requests.get(image_url).content
-        with open('picture.jpg', 'wb') as handler:
-            handler.write(img_data)
-        await ctx.send(response)
+@bot.command(name='show', help='Zoek zelf hulp gast!')
+@commands.has_role('fryslan')
+async def show(ctx, *args):
+    response = 'Hallo'
+    image_url = 'https://vignette.wikia.nocookie.net/lekkerspelen/images/c/c6/Richard.jpg/revision/latest/scale-to-width-down/220?cb=20181203192730&path-prefix=nl'
+    img_data = requests.get(image_url).content
+    with open('picture.jpg', 'wb') as handler:
+        handler.write(img_data)
+    await ctx.send(response)
 
-        for x in range(int(args[0])):
-            await ctx.send(file=discord.File('picture.jpg'))
-        os.remove('picture.jpg')
-
-    @bot.command(name='clear', help='Zoek zelf hulp gast!')
-    @commands.has_role('fryslan')
-    async def clear(ctx, *args):
-        if args[0] == "all":
-            await ctx.channel.purge(limit=999999999999)
-        await ctx.channel.purge(limit=int(args[0]) + 1)
+    for x in range(int(args[0])):
+        await ctx.send(file=discord.File('picture.jpg'))
+    os.remove('picture.jpg')
 
 
-bot.add_cog(FaceReveal)
+@bot.command(name='clear', help='Zoek zelf hulp gast!')
+@commands.has_role('fryslan')
+async def clear(ctx, *args):
+    if args[0] == "all":
+        await ctx.channel.purge(limit=999999999999)
+    await ctx.channel.purge(limit=int(args[0]) + 1)
+
+
 bot.run(token)
