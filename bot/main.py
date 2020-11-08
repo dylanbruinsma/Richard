@@ -29,7 +29,7 @@ async def on_command_error(ctx, error):
 async def weer(ctx, *args):
     owm = OWM(owmtoken)
     mgr = owm.weather_manager()
-    observation = mgr.weather_at_place(args[0] + ',NL')
+    observation = mgr.weather_at_place('Groningen,NL')
     w = observation.weather
     await ctx.send(w)
 
