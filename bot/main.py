@@ -23,9 +23,8 @@ async def on_command_error(ctx, error):
         await ctx.send('Dit mag jij helaas niet doen :)')
 
 @bot.event
-async def on_typing(channel, user, when):
-    print(channel, user, when)
-
+async def on_typing(ctx, channel, user, when):
+    ctx.send(channel, user, when)
 
 @bot.command(name='show', help='Zoek zelf hulp gast!')
 @commands.has_role('fryslan')
