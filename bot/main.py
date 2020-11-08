@@ -48,7 +48,7 @@ async def clear(ctx, *args):
 @bot.command(name='test', help='Zoek zelf hulp gast!')
 @commands.has_role('fryslan')
 async def test(ctx, *args):
-    channel = bot.get_channel('735213841235050536')
-    await bot.join_voice_channel(channel)
+    channel = bot.get_channel(735213841235050536)
+    await bot.connect(channel)
 
 bot.run(token)
