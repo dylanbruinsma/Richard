@@ -4,7 +4,7 @@ import requests
 import os
 
 
-TOKEN = 'NzczMTg5MjE0ODExNTg2NTYy.X6FmkQ.5XKn1fVwJnna8Ki1iEPy0st19Rw'
+
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
                    description='Een hele malse bot')
 
@@ -46,4 +46,4 @@ async def clear(ctx, *args):
     await ctx.channel.purge(limit=int(args[0]) + 1)
 
 
-bot.run(TOKEN)
+bot.run()
