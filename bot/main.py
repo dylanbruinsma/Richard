@@ -27,7 +27,7 @@ async def on_typing(channel, user, when):
     print(channel, user, when)
 
 
-@bot.command(name='show', help='Zoek zelf hulp gast!', category=)
+@bot.command(name='show', help='Zoek zelf hulp gast!')
 @commands.has_role('fryslan')
 async def show(ctx, *args):
     response = 'Hallo'
