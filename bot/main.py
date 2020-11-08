@@ -3,7 +3,7 @@ from discord.ext import commands
 import requests
 import os
 
-
+token = os.getenv("DISCORD_BOT_TOKEN")
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
                    description='Een hele malse bot')
@@ -46,4 +46,4 @@ async def clear(ctx, *args):
     await ctx.channel.purge(limit=int(args[0]) + 1)
 
 
-bot.run()
+bot.run(token)
