@@ -4,7 +4,7 @@ import requests
 import os
 
 
-TOKEN = 'NzczMTg5MjE0ODExNTg2NTYy.X6FmkQ.kNvKIHnc17AM1M3T-Jwz0cHebSg'
+TOKEN = 'NzczMTg5MjE0ODExNTg2NTYy.X6FmkQ.ZTzFK723R8yvqGnb5oR8hE18oec'
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
                    description='Een hele malse bot')
 
