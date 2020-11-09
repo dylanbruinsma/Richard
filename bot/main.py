@@ -9,15 +9,6 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
 
 
 @bot.event
-async def on_message(message):
-    messages = ['goeiemorgen', 'morgen', 'morning', 'goodmorning', 'gm']
-    for x in messages:
-        if message.content.startswith('$', x):
-            channel = message.channel
-            await channel.send('Goedemorgen', message.author)
-
-
-@bot.event
 async def on_ready():
     print('Logged in as', bot.user.name)
     print(bot.user.id)
