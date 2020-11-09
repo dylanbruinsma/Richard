@@ -2,12 +2,8 @@ import discord
 from discord.ext import commands
 import os
 
-
 client = commands.Bot(command_prefix='pp ')
 token = os.getenv("DISCORD_BOT_TOKEN")
-
-
-
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
