@@ -3,17 +3,8 @@ from discord.ext import commands
 import os
 
 client = commands.Bot(command_prefix='pp ')
+
 token = os.getenv("DISCORD_BOT_TOKEN")
-
-@client.command()
-async def load(ctx, extension):
-    client.load_extension(f'cogs.{extension}')
-
-
-@client.command()
-async def unload(ctx, extension):
-    client.unload_extension(f'cogs.{extension}')
-
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
