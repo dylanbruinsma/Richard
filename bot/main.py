@@ -2,17 +2,17 @@ import discord
 from discord.ext import commands
 import requests
 import os
-import asyncio
-import functools
-import itertools
-import math
-import random
-import youtube_dl
-from async_timeout import timeout
 
 token = os.getenv("DISCORD_BOT_TOKEN")
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("pp "),
                    description='Een hele malse bot')
+
+
+@bot.event
+async def on_message(ctx, msg):
+    messages = ['morgen', 'morning', 'goodmorning', 'gm']
+    if messages in msg.lower():
+        await ctx.send('Goeiemorgen!')
 
 
 @bot.event
