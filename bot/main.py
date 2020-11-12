@@ -9,7 +9,7 @@ for root, dirs, files in os.walk("cogs"):
     for name in files:
         if name.endswith('.py'):
             print(name)
-            client.load_extension(f'cogs.{name}')
+            client.load_extension(f'cogs.{name[:-3]}')
 
 @client.event
 async def on_ready():
