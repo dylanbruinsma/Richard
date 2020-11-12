@@ -12,7 +12,7 @@ for filename in os.listdir('cogs'):
 @client.event
 async def on_ready():
     await client.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.listening, name='you'))
+        activity=discord.Activity(type=discord.ActivityType.listening, name='Dylan'))
     print('Richard is er klaar voor!')
 
 
