@@ -5,8 +5,8 @@ import os
 client = commands.Bot(commands.when_mentioned_or('pp '))
 token = os.getenv("DISCORD_BOT_TOKEN")
 
-client.load_extension('cogs/Tools.py')
-client.load_extension('cogs/Voice.py')
+client.load_extension('cogs.Tools')
+client.load_extension('cogs.Voice')
 
 @client.event
 async def on_ready():
