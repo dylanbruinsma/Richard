@@ -5,11 +5,8 @@ import os
 client = commands.Bot(commands.when_mentioned_or('pp '))
 token = os.getenv("DISCORD_BOT_TOKEN")
 
-for root, dirs, files in os.walk("cogs"):
-    for name in files:
-        if name.endswith('.py'):
-            print(f'cogs.{name[:-3]}')
-            client.load_extension(f'cogs/{name}')
+client.load_extension('cogs/Tools.py')
+client.load_extension('cogs/Voice.py')
 
 @client.event
 async def on_ready():
