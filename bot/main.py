@@ -2,9 +2,14 @@ import discord
 from discord.ext import commands
 import os
 
-client = commands.Bot(command_prefix='pp ')
+client = commands.Bot(commands.when_mentioned_or('pp '))
 token = os.getenv("DISCORD_BOT_TOKEN")
-# token = 'NzczMTg5MjE0ODExNTg2NTYy.X6FmkQ.zLMqc-de9QTKoYWsAAYAhlaFFeQ'
+
+@client.event
+async def on_ready():
+    await client.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.listening, name='you'))
+    print('Richard is er klaar voor!')
 
 for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
