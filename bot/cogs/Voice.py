@@ -14,11 +14,11 @@ class Voice(commands.Cog):
     @commands.command()
     async def play(self, ctx):
         await ctx.channel.purge(limit=1)
-        channel = self.client.get_channel(773155351485874216)
+        channel = self.client.get_channel(774957379061547038)
         vc = await channel.connect()
         # create a client object with your app credentials
         vclient = soundcloud.Client(client_id='679195bf4a6d645ba1e74291c02d7a72')
-
+        ctx.channel.send('Hallo')
         sets = ['https://soundcloud.com/jennifer-naremskaya/sets/gg-magree-1',
                 'https://soundcloud.com/perfectmsc/sets/lofi',
                 'https://soundcloud.com/sanholobeats/sets/album1',
