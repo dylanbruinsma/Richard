@@ -18,7 +18,7 @@ class Voice(commands.Cog):
         vc = await channel.connect()
         # create a client object with your app credentials
         vclient = soundcloud.Client(client_id='679195bf4a6d645ba1e74291c02d7a72')
-        ctx.channel.send('Hallo')
+        ctx.send('Hallo')
         sets = ['https://soundcloud.com/jennifer-naremskaya/sets/gg-magree-1',
                 'https://soundcloud.com/perfectmsc/sets/lofi',
                 'https://soundcloud.com/sanholobeats/sets/album1',
@@ -26,14 +26,14 @@ class Voice(commands.Cog):
                 ]
         tracklist = []
         for setx in sets:
-            ctx.channel.send(setx)
+            ctx.send(setx)
             list = vclient.get('/resolve', url=setx)
             playlist = vclient.get('/playlists/' + str(list.id))
 
             for track in playlist.tracks:
                 tracklist.append((track['id'], track['title']))
         random.shuffle(tracklist)
-        ctx.channel.send(f'added: {len(tracklist)} songs to the list')
+        ctx.send(f'added: {len(tracklist)} songs to the list')
         for x in tracklist:
             if not vc.is_playing():
                 print(x[1])
