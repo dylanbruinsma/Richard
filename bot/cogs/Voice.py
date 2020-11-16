@@ -26,19 +26,20 @@ class Voice(commands.Cog):
                 ]
         tracklist = []
         for setx in sets:
-
+            ctx.channel.send(setx)
             list = vclient.get('/resolve', url=setx)
             playlist = vclient.get('/playlists/' + str(list.id))
 
             for track in playlist.tracks:
                 tracklist.append((track['id'], track['title']))
         random.shuffle(tracklist)
-        print(f'added: {len(tracklist)} songs to the list')
+        ctx.channel.send(f'added: {len(tracklist)} songs to the list')
         for x in tracklist:
             if not vc.is_playing():
                 print(x[1])
                 song = vclient.get('/tracks/' + str(x[0]) + '/stream', allow_redirects=False).location
                 vc.play(discord.FFmpegPCMAudio(song))
+                ctx.channel.send(f'ik speel nu: {song}')
                 await self.client.change_presence(
                     activity=discord.Activity(type=discord.ActivityType.listening, name=(str(x[1]))))
             while vc.is_playing():
