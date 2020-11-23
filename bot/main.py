@@ -11,6 +11,7 @@ token = os.getenv("DISCORD_BOT_TOKEN")
 
 client.load_extension('cogs.Tools')
 client.load_extension('cogs.Voice')
+client.load_extension('cogs.Fun')
 
 @client.event
 async def on_ready():
