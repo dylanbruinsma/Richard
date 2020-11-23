@@ -1,5 +1,6 @@
 import asyncio
 import sqlite3
+
 import discord
 import youtube_dl
 from discord.ext import commands
@@ -28,16 +29,12 @@ ffmpeg_options = {
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
 
-
-
-
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
         super().__init__(source, volume)
         self.data = data
         self.title = data.get('title')
         self.url = data.get('url')
-
 
     @classmethod
     async def from_url(cls, url, *, loop=None, stream=False):
@@ -55,12 +52,17 @@ class YTDLSource(discord.PCMVolumeTransformer):
 class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.conn = sqlite3.connect('playlist.db')
+        self.cur = self.conn.cursor()
 
     @commands.command()
-    async def stream(self, ctx):
+    async def stream(self, ctx, *args):
         await ctx.channel.purge(limit=1)
-        url = 'https://www.youtube.com/watch?v=5qap5aO4i9A'
-        channel = self.bot.get_channel(773155351485874216)
+        channel = self.bot.get_channel(735213841235050536)
+        # urls = self.cur.execute('''SELECT * FROM main.playlist''').fetchall()
+        url = ''
+        for x in args:
+            url = url + x
         vc = await channel.connect()
 
         player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
@@ -70,5 +72,20 @@ class Music(commands.Cog):
             activity=discord.Activity(type=discord.ActivityType.listening, name=player.title))
 
 
+class Playlist(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        self.conn = sqlite3.connect('playlist.db')
+        self.cur = self.conn.cursor()
+
+    @commands.command()
+    async def speel(self, ctx, url):
+        author = ctx.author.name
+        self.cur.execute('''CREATE TABLE IF NOT EXISTS playlist (url TEXT, aanvrager TEXT)''')
+        self.cur.execute('''INSERT INTO playlist VALUES (?,?)''', (url, author))
+        self.conn.commit()
+
+
 def setup(client):
     client.add_cog(Music(client))
+    client.add_cog(Playlist(client))

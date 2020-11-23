@@ -12,17 +12,17 @@ class Admintools(commands.Cog):
 
 
     @commands.command()
-    @commands.has_role('fryslan')
+    @commands.has_role(769157221287854090)
     async def load(self, ctx, extension):
         self.client.load_extension(f'cogs.{extension}')
 
     @commands.command()
-    @commands.has_role('fryslan')
+    @commands.has_role(769157221287854090)
     async def unload(self, ctx, extension):
         self.client.unload_extension(f'cogs.{extension}')
 
     @commands.command()
-    @commands.has_role('fryslan')
+    @commands.has_role(769157221287854090)
     async def show(self, ctx, amount):
         response = 'Hallo'
         image_url = 'https://vignette.wikia.nocookie.net/lekkerspelen/images/c/c6/Richard.jpg/revision/latest/scale-to-width-down/220?cb=20181203192730&path-prefix=nl'
@@ -32,11 +32,12 @@ class Admintools(commands.Cog):
         await ctx.send(response)
 
         for x in range(int(amount)):
+
             await ctx.send(file=discord.File('picture.jpg'))
         os.remove('picture.jpg')
 
     @commands.command()
-    @commands.has_role('fryslan')
+    @commands.has_role(769157221287854090)
     async def clear(self, ctx, amount):
         if amount == "all":
             await ctx.channel.purge(limit=999999999999)
