@@ -19,7 +19,7 @@ class Memes(commands.Cog):
         if str(ctx.message.attachments[0].url[-5:]) == 'jpeg':
             ext = str(ctx.message.attachments[0].url[-5:])
         else:
-            ext = str(ctx.message.attachments[0].url[-5:])
+            ext = str(ctx.message.attachments[0].url[-4:])
         await ctx.channel.purge(limit=1)
         image_bytes = io.BytesIO(image.content)
         img = Image.open(image_bytes)
