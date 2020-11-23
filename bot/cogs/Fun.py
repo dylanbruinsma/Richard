@@ -16,7 +16,7 @@ class Memes(commands.Cog):
     @commands.command()
     async def meme(self, ctx, *args):
         image = requests.get(ctx.message.attachments[0].url)
-        if str(ctx.message.attachments[0].url[-5:]) == 'jpeg':
+        if str(ctx.message.attachments[0].url[-5:]) == '.jpeg':
             ext = str(ctx.message.attachments[0].url[-5:])
         else:
             ext = str(ctx.message.attachments[0].url[-4:])
